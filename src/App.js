@@ -1,10 +1,16 @@
+import React from "react";
+import UserList from "./components/UserList";
 
-function App() {
+export const config = {
+  endpoint: "https://jsonplaceholder.typicode.com",
+};
+
+const App = () => {
   return (
-    <div>
-      <h1>Tacnique Assignment</h1>
+    <div className="app">
+      <UserList />
     </div>
   );
-}
+};
 
 export default App;
