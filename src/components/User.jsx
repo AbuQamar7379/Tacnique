@@ -1,9 +1,11 @@
 import React from "react";
 
-const User = ({ userData, setShowForm }) => {
+const User = ({ userData, setShowForm, handleEditUser }) => {
   const handleEdit = () => {
     setShowForm(true);
+    handleEditUser(userData);
   };
+
   return (
     <div className="user">
       <div>
