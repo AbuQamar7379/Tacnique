@@ -1,21 +1,28 @@
 .app {
-    padding: 20px;
-    font-family: Arial, sans-serif;
-  }
-  
-  .user-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  
-  .user {
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 5px;
-    width: 200px;
-  }
-  
-  .error {
-    color: red;
-  }
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.user-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 80px;
+}
+
+.user {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  width: 200px;
+}
+
+.error {
+  color: red;
+}
+
+.form {
+  position: absolute;
+  top: 125px;
+  padding-bottom: 50px;
+}
