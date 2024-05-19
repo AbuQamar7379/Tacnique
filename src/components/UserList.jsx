@@ -5,12 +5,18 @@ import "../styles/styles.css";
 import { config } from "../App";
 import UserForm from "./UserForm";
 
+/**
+ * Component for the user list.
+ */
 const UserList = () => {
   const [users, setUsers] = useState([]);
   const [error, setError] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
 
+  /**
+   * Fetch users from the API.
+   */
   const fetchUsers = async () => {
     try {
       const { data } = await axios.get(`${config.endpoint}/users`);
@@ -24,6 +30,10 @@ const UserList = () => {
     fetchUsers();
   }, []);
 
+  /**
+   * Handle adding or editing a user.
+   * @param {Object} user - The user data.
+   */
   const handleAddOrEditUser = (user) => {
     if (selectedUser) {
       setUsers(users.map(u => (u.id === user.id ? user : u)));
@@ -33,6 +43,23 @@ const UserList = () => {
     setShowForm(false);
   };
 
+  /**
+   * Handle deleting a user.
+   * @param {number} id - The ID of the user to delete.
+   */
+  const handleDeleteUser = async (id) => {
+    try {
+      await axios.delete(`${config.endpoint}/users/${id}`);
+      setUsers(users.filter(user => user.id !== id));
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
+  /**
+   * Handle editing a user.
+   * @param {Object} userData - The user data to edit.
+   */
   const handleEditUser = (userData) => {
     setSelectedUser(userData);
     setShowForm(true);
@@ -58,6 +85,7 @@ const UserList = () => {
             userData={user}
             setShowForm={setShowForm}
             handleEditUser={handleEditUser}
+            handleDeleteUser={handleDeleteUser}
           />
         ))}
       </div>
